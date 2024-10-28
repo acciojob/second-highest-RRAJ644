@@ -10,7 +10,27 @@
 	<script>
 		function secondHighest(arr) {
 			//Write your code here
-			
+			if (arr.length < 2) {
+    return -Infinity;
+  }
+
+  let max = -Infinity;
+  let secondMax = -Infinity;
+
+  for (let i = 0; i < arr.length; i++) {
+    const num = arr[i];
+
+    // Update max and secondMax
+    if (num > max) {
+      secondMax = max; // Update secondMax to the previous max
+      max = num; // Update max to the new highest number
+    } else if (num > secondMax && num !== max) {
+      secondMax = num; // Update secondMax if num is different from max
+    }
+  }
+
+  // If secondMax is still -Infinity, it means all elements were the same
+  return secondMax === -Infinity ? -Infinity : secondMax;
 		}
 
 		function Main() {
